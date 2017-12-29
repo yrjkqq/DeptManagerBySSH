@@ -6,10 +6,9 @@ import com.cdsxt.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,8 +36,12 @@ public class EmpController {
         return "emps/addEmp";
     }
 
+    // 验证参数
     @RequestMapping(value = "addEmp", method = RequestMethod.POST)
-    public String addEmp(Emp emp) {
+    public String addEmp(@Validated @ModelAttribute("returnEmp") Emp emp, BindingResult result) {
+        if (result.hasErrors()) {
+            return "emps/addEmp";
+        }
         empService.addEmp(emp);
         return "redirect:/depts";
     }

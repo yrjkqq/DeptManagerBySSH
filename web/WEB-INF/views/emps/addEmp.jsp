@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -50,7 +51,8 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">雇佣日期</label>
                 <div class="col-md-10">
-                    <input class="form_datetime form-control" placeholder="HIREDATE" name="hiredate">
+                    <input class="form_datetime form-control" placeholder="HIREDATE" name="hiredate" value="${returnEmp.hiredate}">
+                    <form:errors path="returnEmp.hiredate" cssStyle="color: red"></form:errors>
                 </div>
             </div>
 
@@ -90,6 +92,6 @@
 </html>
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
-        format: "yyyy/MM/dd"
+        format: "yyyy-MM-dd"
     });
 </script>

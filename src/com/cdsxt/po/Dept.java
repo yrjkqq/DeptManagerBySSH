@@ -1,5 +1,8 @@
 package com.cdsxt.po;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +15,13 @@ public class Dept {
     @SequenceGenerator(name = "deptGen", sequenceName = "seq_dept")
     @GeneratedValue(generator = "deptGen")
     private Integer deptno;
+
+    @NotEmpty(message = "部门名称不能为空")
+    @Length(min = 4, max = 14, message = "部门名称长度必须在 4~14 个字符之间")
     private String dname;
+
+    @NotEmpty(message = "部门地址不能为空")
+    @Length(min = 4, max = 13, message = "部门地址长度必须在 4~13 个字符之间")
     private String loc;
 
     // 保存员工的集合

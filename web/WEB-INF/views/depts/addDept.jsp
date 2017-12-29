@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--添加 form 标签库, 用于显示验证结果--%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -29,13 +31,16 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">部门名称</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="DNAME" name="dname">
+                    <input class="form-control" placeholder="DNAME" name="dname" value="${dept.dname}">
+                    <form:errors path="dept.dname" cssStyle="color: red"></form:errors>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">部门地址</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="LOC" name="loc">
+                    <input class="form-control" placeholder="LOC" name="loc" value="${dept.loc}">
+                    <%--显示验证结果--%>
+                    <form:errors path="dept.loc" cssStyle="color: red"></form:errors>
                 </div>
             </div>
             <div class="form-group">

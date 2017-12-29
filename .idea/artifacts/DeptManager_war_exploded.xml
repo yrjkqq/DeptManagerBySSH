@@ -21,6 +21,7 @@
           <element id="library" level="application" name="jackson" />
           <element id="library" level="application" name="spring-jdbc" />
           <element id="library" level="application" name="spring-orm" />
+          <element id="library" level="application" name="validation" />
         </element>
       </element>
     </root>

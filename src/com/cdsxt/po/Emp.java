@@ -1,8 +1,12 @@
 package com.cdsxt.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 @Entity
@@ -16,6 +20,11 @@ public class Emp {
     private String ename;
     private String job;
     private Integer mgr;
+
+    @JsonFormat(pattern = "yyyy年MM月dd日")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    // @NotEmpty(message = "时间不能为空")
+    // @Past // (message = "时间必须是过去的时间")
     private Date hiredate;
     private Double sal;
     private Double comm;
